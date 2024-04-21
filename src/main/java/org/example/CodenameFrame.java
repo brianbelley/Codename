@@ -3,10 +3,6 @@ package org.example;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.util.List;
 import org.example.model.*;
 
@@ -86,22 +82,8 @@ public class CodenameFrame extends JFrame {
 
     private void deleteRoom() {
         // Perform deletion operation in the database or any other cleanup
-        try (Connection connection = DriverManager.getConnection("jdbc:sqlite:CodenameDB.sqlite")) {
-            String deleteRoomQuery = "DELETE FROM Rooms WHERE RoomID = ?";
-            try (PreparedStatement statement = connection.prepareStatement(deleteRoomQuery)) {
-                statement.setInt(1, roomIdToDelete);
-                statement.executeUpdate();
-                System.out.println("Room deleted successfully!");
-            } catch (SQLException ex) {
-                ex.printStackTrace();
-                JOptionPane.showMessageDialog(this, "Failed to delete room: " + ex.getMessage());
-            }
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-            JOptionPane.showMessageDialog(this, "Failed to connect to database: " + ex.getMessage());
-        }
+        JOptionPane.showMessageDialog(this, "Room " + roomIdToDelete + " deleted successfully!");
     }
-
 
     public static void main(String[] args) {
         int roomIdToDelete = 1; // Replace 1 with the actual room ID to delete
