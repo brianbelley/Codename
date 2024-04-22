@@ -26,6 +26,12 @@ public class CodenameFrame extends JFrame {
     private boolean isRedOperatorTurn = false;
     private boolean isBlueSpymasterTurn = false;
     private boolean isBlueOperatorTurn = false;
+    private JTextField clueText;
+    private JTextField numberTextField;
+    private JLabel clueLabel;
+    private JLabel numberLabel;
+    private JButton revealCardButton;
+
 
     public CodenameFrame(int roomIdToDelete, List<KeyCard> keyCards) {
         this.roomIdToDelete = roomIdToDelete; // Store the room ID to delete
@@ -46,11 +52,12 @@ public class CodenameFrame extends JFrame {
 
         JPanel bottomPanel = new JPanel(new GridLayout(4, 2));
         JButton endTurnButton = new JButton("End Turn");
-        JButton revealCardButton = new JButton("Reveal Card");
-        JLabel clueLabel = new JLabel("Clue:");
-        JTextField clueText = new JTextField();
-        JLabel numberLabel = new JLabel("Number:");
-        JTextField numberTextField = new JTextField();
+        revealCardButton = new JButton("Reveal Card");
+        JButton revealClueButton = new JButton("Reveal Clue");
+        clueLabel = new JLabel("Clue:");
+        clueText = new JTextField();
+        numberLabel = new JLabel("Number:");
+        numberTextField = new JTextField();
 
         bottomPanel.add(clueLabel);
         bottomPanel.add(clueText);
@@ -58,8 +65,17 @@ public class CodenameFrame extends JFrame {
         bottomPanel.add(numberTextField);
         bottomPanel.add(revealCardButton);
         bottomPanel.add(endTurnButton);
+        bottomPanel.add(revealClueButton);
 
         add(bottomPanel, BorderLayout.SOUTH);
+
+        // Hide blue label, text field, and number label initially
+        clueLabel.setVisible(isRedSpymasterTurn || isBlueSpymasterTurn);
+        clueText.setVisible(isRedSpymasterTurn || isBlueSpymasterTurn);
+        numberLabel.setVisible(isRedSpymasterTurn || isBlueSpymasterTurn);
+        numberTextField.setVisible(isRedSpymasterTurn || isBlueSpymasterTurn);
+
+
 
         // End turn button action listener
         endTurnButton.addActionListener(new ActionListener() {
@@ -76,6 +92,24 @@ public class CodenameFrame extends JFrame {
                 deleteRoom();
             }
         });
+
+
+        // Reveal Clue button action listener
+        revealClueButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                handleRevealClue();
+            }
+        });
+
+        // Reveal Card button action listener
+        revealCardButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                handleRevealCard();
+            }
+        });
+
 
         // Set size and make visible
         setSize(500, 500);
@@ -95,6 +129,28 @@ public class CodenameFrame extends JFrame {
             centerPanel.removeAll(); // Clear existing components
             for (KeyCard card : keyCards) {
                 JButton cardButton = new JButton(card.getCardWord());
+
+                // Set color based on card type for spymaster's turn
+                if (isRedOperatorTurn || isBlueOperatorTurn) {
+                    switch (card.getCardType()) {
+                        case RED:
+                            cardButton.setBackground(Color.RED);
+                            break;
+                        case BLUE:
+                            cardButton.setBackground(Color.BLUE);
+                            break;
+                        case NEUTRAL:
+                            cardButton.setBackground(Color.WHITE);
+                            break;
+                        case ASSASSIN:
+                            cardButton.setBackground(Color.BLACK);
+                            break;
+                    }
+                } else {
+                    // Set default color for operator's turn
+                    cardButton.setBackground(Color.LIGHT_GRAY); // Set default color to light gray for operator's turn
+                }
+
                 centerPanel.add(cardButton);
                 // Add action listener to handle card clicks
                 cardButton.addActionListener(new ActionListener() {
@@ -108,6 +164,8 @@ public class CodenameFrame extends JFrame {
             centerPanel.revalidate(); // Refresh the panel to reflect changes
         }
     }
+
+
 
     private void deleteRoom() {
         // Perform deletion operation in the database or any other cleanup
@@ -143,9 +201,47 @@ public class CodenameFrame extends JFrame {
         endTurn();
     }
 
+    // Inside the handleRevealClue method
+    private void handleRevealClue() {
+        // Check if it's the Spymaster's turn
+        if (isRedSpymasterTurn || isBlueSpymasterTurn) {
+            // Logic for revealing clue
+            String clue = clueText.getText();
+            String number = numberTextField.getText();
+
+            // Display clue
+            JOptionPane.showMessageDialog(this, "Clue: " + clue + "\nNumber: " + number);
+
+        } else {
+            // Display message indicating only the Operator can reveal clues
+            JOptionPane.showMessageDialog(this, "Only the Operator can reveal clues.");
+        }
+    }
+
+    // Inside the handleRevealCard method
+    private void handleRevealCard() {
+        // Check if it's the Spymaster's turn
+        if (isRedOperatorTurn || isBlueOperatorTurn) {
+            // Logic for revealing card
+            // Implement the logic here
+        } else {
+            // Display message indicating only the Spymaster can reveal cards
+            JOptionPane.showMessageDialog(this, "Only the Spymaster can reveal cards.");
+        }
+    }
+
+
+
 
     private void endTurn() {
         String message;
+
+        // Hide or show clue-related components based on the current turn
+        clueLabel.setVisible(isRedSpymasterTurn || isBlueSpymasterTurn);
+        clueText.setVisible(isRedSpymasterTurn || isBlueSpymasterTurn);
+        numberLabel.setVisible(isRedSpymasterTurn || isBlueSpymasterTurn);
+        numberTextField.setVisible(isRedSpymasterTurn || isBlueSpymasterTurn);
+        revealCardButton.setVisible(isRedSpymasterTurn || isBlueSpymasterTurn);
 
         if (isRedSpymasterTurn) {
             message = "It's now the Red Spymaster's turn.";
@@ -165,7 +261,21 @@ public class CodenameFrame extends JFrame {
             isRedSpymasterTurn = true; // Start over with Red Spymaster
         }
 
+        // Clear clue text field if it's the operator's turn
+        if (isRedOperatorTurn || isBlueOperatorTurn) {
+            clear();
+        }
+
+        // Update the card colors
+        populateCenterPanelWithKeyCards();
+
         JOptionPane.showMessageDialog(this, message);
+
+    }
+
+    public void clear(){
+        clueText.setText("");
+        numberTextField.setText("");
     }
 
 

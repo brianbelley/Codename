@@ -51,12 +51,18 @@ public class KeyCard {
         Random random = new Random();
         for (String word : words) {
             int cardNumber = random.nextInt(1000); // Generate a random card number
-            CardType cardType = CardType.NEUTRAL; // Assuming all cards are normal for now
+            CardType cardType;
+
+            // Randomly select a card type
+            int typeIndex = random.nextInt(CardType.values().length);
+            cardType = CardType.values()[typeIndex];
+
             keyCards.add(new KeyCard(cardNumber, word, cardType));
         }
 
         return keyCards;
     }
+
 
 
 
