@@ -1,26 +1,16 @@
 package org.example.model;
 
-import javax.swing.*;
-import java.sql.*;
-
-public class Record {
+public class GameState {
     private int roundNumber;
     private int scoreNumber;
-    private String result;
+    private String status;
 
-    public Record(int roundNumber, int scoreNumber, String result) {
+    public GameState(int roundNumber, int scoreNumber, String status) {
         this.roundNumber = roundNumber;
         this.scoreNumber = scoreNumber;
-        this.result = result;
+        this.status = status;
     }
 
-    public Record() {
-        this.roundNumber = 0;
-        this.scoreNumber = 0;
-        this.result = "";
-    }
-
-    // Getters and setters for roundNumber, scoreNumber, and result
     public int getRoundNumber() {
         return roundNumber;
     }
@@ -37,26 +27,26 @@ public class Record {
         this.scoreNumber = scoreNumber;
     }
 
-    public String getResult() {
-        return result;
+    public String getStatus() {
+        return status;
     }
 
-    public void setResult(String result) {
-        this.result = result;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
-    // toString method for printing record details
+    public void saveGameState(int roundNumber, int scoreNumber, String status) {
+        this.roundNumber = roundNumber;
+        this.scoreNumber = scoreNumber;
+        this.status = status;
+    }
+
     @Override
     public String toString() {
-        return "Record{" +
+        return "GameState{" +
                 "roundNumber=" + roundNumber +
                 ", scoreNumber=" + scoreNumber +
-                ", result='" + result + '\'' +
+                ", status='" + status + '\'' +
                 '}';
     }
-
-
-
-
 }
-

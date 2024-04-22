@@ -95,6 +95,7 @@ public class LoginFrame extends JFrame {
         this.setVisible(false);
     }
 
+    // In the LoginFrame class
     private void loginUser() {
         String username = usernameField.getText();
         char[] passwordChars = passwordField.getPassword();
@@ -104,8 +105,8 @@ public class LoginFrame extends JFrame {
             boolean loginSuccess = LoginService.loginUser(username, password);
             if (loginSuccess) {
                 JOptionPane.showMessageDialog(this, "Login successful!");
-                // Open RoomFrame after successful login
-                new RoomFrame();
+                // Open RoomFrame after successful login and pass the username
+                new MenuFrame(username);
                 dispose(); // Close the LoginFrame
             } else {
                 JOptionPane.showMessageDialog(this, "Invalid username or password!");
@@ -116,10 +117,4 @@ public class LoginFrame extends JFrame {
         }
     }
 
-
-
-
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(LoginFrame::new);
-    }
 }

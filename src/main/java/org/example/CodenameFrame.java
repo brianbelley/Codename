@@ -1,6 +1,7 @@
 package org.example;
 
 import org.example.model.Player;
+import org.example.model.Record;
 import org.example.model.Roles;
 import org.example.model.Team;
 
@@ -17,11 +18,11 @@ import org.example.model.*;
 
 public class CodenameFrame extends JFrame {
 
+    private String username;
     private int roomIdToDelete; // Variable to store the room ID to delete
     private List<KeyCard> keyCards; // List to store keycards
     private Player redOperator;
     private Player blueOperator;
-    private boolean isRedTurn = true; // Boolean to track whose turn it is
     private boolean isRedSpymasterTurn = true;
     private boolean isRedOperatorTurn = false;
     private boolean isBlueSpymasterTurn = false;
@@ -31,11 +32,22 @@ public class CodenameFrame extends JFrame {
     private JLabel clueLabel;
     private JLabel numberLabel;
     private JButton revealCardButton;
+    private int currentTurnIndex = 0;
+    private final String[] turnOrder = {"RED_SPYMASTER", "RED_OPERATOR", "BLUE_SPYMASTER", "BLUE_OPERATOR"};
+    private JLabel scoreLabel;
+    private GameState gameState;
+
+    private int turnCounter = 0;
+    private int redScore = 8;
+    private int blueScore = 8;
 
 
-    public CodenameFrame(int roomIdToDelete, List<KeyCard> keyCards) {
+    public CodenameFrame(String username,int roomIdToDelete, List<KeyCard> keyCards) {
+        this.username = username;
         this.roomIdToDelete = roomIdToDelete; // Store the room ID to delete
         this.keyCards = keyCards; // Store the keycards
+
+        gameState = new GameState(0, 16, "Ongoing");
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
@@ -46,6 +58,11 @@ public class CodenameFrame extends JFrame {
         titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
         topPanel.add(titleLabel, BorderLayout.NORTH);
         add(topPanel, BorderLayout.NORTH);
+
+        // Create and initialize the score label
+        scoreLabel = new JLabel("Red Score: " + redScore + "   Blue Score: " + blueScore);
+        scoreLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        topPanel.add(scoreLabel, BorderLayout.CENTER);
 
         JPanel centerPanel = new JPanel(new GridLayout(5, 5)); // Example layout
         add(centerPanel, BorderLayout.CENTER);
@@ -148,7 +165,8 @@ public class CodenameFrame extends JFrame {
                     }
                 } else {
                     // Set default color for operator's turn
-                    cardButton.setBackground(Color.LIGHT_GRAY); // Set default color to light gray for operator's turn
+                    cardButton.setBackground(Color.PINK);// Set default color to light gray for operator's turn
+                    cardButton.setForeground(Color.BLACK);
                 }
 
                 centerPanel.add(cardButton);
@@ -157,12 +175,137 @@ public class CodenameFrame extends JFrame {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         // Handle card click logic
-                        JOptionPane.showMessageDialog(CodenameFrame.this, "Card Clicked: " + card.getCardWord());
+                        handleCardClick(card);
+
                     }
                 });
             }
             centerPanel.revalidate(); // Refresh the panel to reflect changes
         }
+    }
+
+
+    private void handleCardClick(KeyCard clickedCard) {
+        // Check if it's the Spymaster's turn
+        if (!isSpymasterTurn()) {
+            // Update the card's state to revealed
+            clickedCard.setRevealed(true);
+
+            // Update the card colors
+            populateCenterPanelWithKeyCards();
+
+            // Increment turn counter
+            turnCounter++;
+
+            // Decrement the score if the operator clicks on the right keycard
+            if (isOperatorTurn(clickedCard)) {
+                if (clickedCard.getCardType() == CardType.RED) {
+                    redScore--; // Decrease red team's score
+                } else if (clickedCard.getCardType() == CardType.BLUE) {
+                    blueScore--; // Decrease blue team's score
+                }
+                // Update the score label text
+                scoreLabel.setText("Red Score: " + redScore + "   Blue Score: " + blueScore);
+                // Change text color to yellow for Spymasters
+                clueLabel.setForeground(Color.YELLOW);
+                clueText.setForeground(Color.YELLOW);
+            }
+
+            // Check for win condition
+            boolean redTeamWin = true;
+            boolean blueTeamWin = true;
+            boolean assassinRevealed = false;
+            for (KeyCard card : keyCards) {
+                if (!card.isRevealed()) {
+                    if (card.getCardType() == CardType.RED) {
+                        blueTeamWin = false;
+                    } else if (card.getCardType() == CardType.BLUE) {
+                        redTeamWin = false;
+                    }
+                } else if (card.getCardType() == CardType.ASSASSIN) {
+                    assassinRevealed = true;
+                }
+            }
+
+            // Save game state
+            String status;
+            if (redTeamWin) {
+                // Display message indicating the red team wins
+                JOptionPane.showMessageDialog(this, "Red team wins! All red agents have been identified.");
+                status = "Red team wins";
+
+                gameState.saveGameState(turnCounter,redScore+blueScore,status);
+
+                // Create a record instance and save it
+                Record record = new Record(gameState.getRoundNumber(), gameState.getScoreNumber(), gameState.getStatus());
+                User user = new User(username,record);
+                user.saveRecord(user);
+
+                new MenuFrame(username);
+
+                deleteRoom();
+                dispose();
+
+            } else if (blueTeamWin) {
+                // Display message indicating the blue team wins
+                JOptionPane.showMessageDialog(this, "Blue team wins! All blue agents have been identified.");
+                status = "Blue team wins";
+
+                gameState.saveGameState(turnCounter,redScore+blueScore,status);
+
+                // Create a record instance and save it
+                Record record = new Record(gameState.getRoundNumber(), gameState.getScoreNumber(), gameState.getStatus());
+                User user = new User(username,record);
+                user.saveRecord(user);
+
+                new MenuFrame(username);
+
+                deleteRoom();
+                dispose();
+
+            } else if (assassinRevealed) {
+                // Display message indicating the assassin was revealed, end the game
+                JOptionPane.showMessageDialog(this, "Assassin revealed! The opposing team wins.");
+                status = "Assassin revealed";
+
+                gameState.saveGameState(turnCounter,redScore+blueScore,status);
+
+                // Create a record instance and save it
+                Record record = new Record(gameState.getRoundNumber(), gameState.getScoreNumber(), gameState.getStatus());
+                User user = new User(username,record);
+                user.saveRecord(user);
+
+                new MenuFrame(username);
+
+                deleteRoom();
+                dispose();
+
+            } else {
+                status = "Ongoing";
+            }
+            gameState.saveGameState(turnCounter, redScore + blueScore, status);
+
+
+            // Switch turns
+            endTurn();
+        } else {
+            // Display message indicating only the Operator can reveal cards
+            JOptionPane.showMessageDialog(this, "Only the Operator can reveal cards.");
+        }
+    }
+
+
+
+
+
+
+    private boolean isSpymasterTurn() {
+        return !turnOrder[currentTurnIndex].equals("RED_OPERATOR") && !turnOrder[currentTurnIndex].equals("BLUE_OPERATOR");
+    }
+
+    private boolean isOperatorTurn(KeyCard clickedCard) {
+        return turnOrder[currentTurnIndex].equals("RED_OPERATOR") && clickedCard.getCardType() != CardType.BLUE ||
+                turnOrder[currentTurnIndex].equals("BLUE_OPERATOR") && clickedCard.getCardType() != CardType.RED;
     }
 
 
@@ -234,43 +377,45 @@ public class CodenameFrame extends JFrame {
 
 
     private void endTurn() {
-        String message;
+        // Update the card colors
+        populateCenterPanelWithKeyCards();
 
         // Hide or show clue-related components based on the current turn
-        clueLabel.setVisible(isRedSpymasterTurn || isBlueSpymasterTurn);
-        clueText.setVisible(isRedSpymasterTurn || isBlueSpymasterTurn);
-        numberLabel.setVisible(isRedSpymasterTurn || isBlueSpymasterTurn);
-        numberTextField.setVisible(isRedSpymasterTurn || isBlueSpymasterTurn);
-        revealCardButton.setVisible(isRedSpymasterTurn || isBlueSpymasterTurn);
+        clueLabel.setVisible(!isRedSpymasterTurn && !isBlueSpymasterTurn);
+        clueText.setVisible(!isRedSpymasterTurn && !isBlueSpymasterTurn);
+        numberLabel.setVisible(!isRedSpymasterTurn && !isBlueSpymasterTurn);
+        numberTextField.setVisible(!isRedSpymasterTurn && !isBlueSpymasterTurn);
+        revealCardButton.setVisible(!isRedSpymasterTurn && !isBlueSpymasterTurn);
 
-        if (isRedSpymasterTurn) {
-            message = "It's now the Red Spymaster's turn.";
-            isRedSpymasterTurn = false;
-            isRedOperatorTurn = true;
-        } else if (isRedOperatorTurn) {
-            message = "It's now the Red Operator's turn.";
-            isRedOperatorTurn = false;
-            isBlueSpymasterTurn = true;
-        } else if (isBlueSpymasterTurn) {
-            message = "It's now the Blue Spymaster's turn.";
-            isBlueSpymasterTurn = false;
-            isBlueOperatorTurn = true;
-        } else {
-            message = "It's now the Blue Operator's turn.";
-            isBlueOperatorTurn = false;
-            isRedSpymasterTurn = true; // Start over with Red Spymaster
+        // Disable keycards during Spymaster's turn
+        JPanel centerPanel = (JPanel) getContentPane().getComponent(1);
+        Component[] components = centerPanel.getComponents();
+        for (Component component : components) {
+            if (component instanceof JButton) {
+                JButton button = (JButton) component;
+                button.setEnabled(!isRedOperatorTurn || !isBlueOperatorTurn);
+            }
         }
+
+        // Update the current turn index and turn variables
+        currentTurnIndex = (currentTurnIndex + 1) % turnOrder.length;
+        updateTurnVariables();
+
 
         // Clear clue text field if it's the operator's turn
         if (isRedOperatorTurn || isBlueOperatorTurn) {
             clear();
         }
 
-        // Update the card colors
-        populateCenterPanelWithKeyCards();
+        // Display message indicating the current turn
+        JOptionPane.showMessageDialog(this, "It's now " + turnOrder[currentTurnIndex] + "'s turn.");
+    }
 
-        JOptionPane.showMessageDialog(this, message);
-
+    private void updateTurnVariables() {
+        isRedSpymasterTurn = turnOrder[currentTurnIndex].equals("RED_SPYMASTER");
+        isRedOperatorTurn = turnOrder[currentTurnIndex].equals("RED_OPERATOR");
+        isBlueSpymasterTurn = turnOrder[currentTurnIndex].equals("BLUE_SPYMASTER");
+        isBlueOperatorTurn = turnOrder[currentTurnIndex].equals("BLUE_OPERATOR");
     }
 
     public void clear(){
@@ -278,10 +423,4 @@ public class CodenameFrame extends JFrame {
         numberTextField.setText("");
     }
 
-
-    public static void main(String[] args) {
-        int roomIdToDelete = 1; // Replace 1 with the actual room ID to delete
-        List<KeyCard> keyCards = null; // Replace null with the actual list of keycards
-        SwingUtilities.invokeLater(() -> new CodenameFrame(roomIdToDelete, keyCards));
-    }
 }

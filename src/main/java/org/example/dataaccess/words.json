@@ -1,294 +1,153 @@
 {
   "words": [
-    {
-      "word": "apple",
-      "difficulty": "EASY"
-    },
-    {
-      "word": "apricot",
-      "difficulty": "EASY"
-    },
-    {
-      "word": "avocado",
-      "difficulty": "EASY"
-    },
-    {
-      "word": "banana",
-      "difficulty": "EASY"
-    },
-    {
-      "word": "blackberry",
-      "difficulty": "EASY"
-    },
-    {
-      "word": "blueberry",
-      "difficulty": "EASY"
-    },
-    {
-      "word": "cherry",
-      "difficulty": "EASY"
-    },
-    {
-      "word": "date",
-      "difficulty": "EASY"
-    },
-    {
-      "word": "elderberry",
-      "difficulty": "EASY"
-    },
-    {
-      "word": "eggplant",
-      "difficulty": "EASY"
-    },
-    {
-      "word": "fig",
-      "difficulty": "EASY"
-    },
-    {
-      "word": "grape",
-      "difficulty": "EASY"
-    },
-    {
-      "word": "grapefruit",
-      "difficulty": "EASY"
-    },
-    {
-      "word": "honeydew",
-      "difficulty": "EASY"
-    },
-    {
-      "word": "kiwi",
-      "difficulty": "EASY"
-    },
-    {
-      "word": "lemon",
-      "difficulty": "EASY"
-    },
-    {
-      "word": "mango",
-      "difficulty": "EASY"
-    },
-    {
-      "word": "nectarine",
-      "difficulty": "EASY"
-    },
-    {
-      "word": "orange",
-      "difficulty": "EASY"
-    },
-    {
-      "word": "papaya",
-      "difficulty": "EASY"
-    },
-    {
-      "word": "pear",
-      "difficulty": "EASY"
-    },
-    {
-      "word": "quince",
-      "difficulty": "EASY"
-    },
-    {
-      "word": "raspberry",
-      "difficulty": "EASY"
-    },
-    {
-      "word": "strawberry",
-      "difficulty": "EASY"
-    },
-    {
-      "word": "tangerine",
-      "difficulty": "EASY"
-    },
+    {"word": "apple", "difficulty": "EASY"},
+    {"word": "apricot", "difficulty": "EASY"},
+    {"word": "avocado", "difficulty": "EASY"},
+    {"word": "banana", "difficulty": "EASY"},
+    {"word": "blackberry", "difficulty": "EASY"},
+    {"word": "blueberry", "difficulty": "EASY"},
+    {"word": "cherry", "difficulty": "EASY"},
+    {"word": "date", "difficulty": "EASY"},
+    {"word": "elderberry", "difficulty": "EASY"},
+    {"word": "eggplant", "difficulty": "EASY"},
+    {"word": "fig", "difficulty": "EASY"},
+    {"word": "grape", "difficulty": "EASY"},
+    {"word": "grapefruit", "difficulty": "EASY"},
+    {"word": "honeydew", "difficulty": "EASY"},
+    {"word": "kiwi", "difficulty": "EASY"},
+    {"word": "lemon", "difficulty": "EASY"},
+    {"word": "mango", "difficulty": "EASY"},
+    {"word": "nectarine", "difficulty": "EASY"},
+    {"word": "orange", "difficulty": "EASY"},
+    {"word": "papaya", "difficulty": "EASY"},
+    {"word": "pear", "difficulty": "EASY"},
+    {"word": "quince", "difficulty": "EASY"},
+    {"word": "raspberry", "difficulty": "EASY"},
+    {"word": "strawberry", "difficulty": "EASY"},
+    {"word": "tangerine", "difficulty": "EASY"},
+    {"word": "watermelon", "difficulty": "EASY"},
+    {"word": "pineapple", "difficulty": "EASY"},
+    {"word": "plum", "difficulty": "EASY"},
+    {"word": "coconut", "difficulty": "EASY"},
+    {"word": "grapevine", "difficulty": "EASY"},
+    {"word": "peach", "difficulty": "EASY"},
+    {"word": "lime", "difficulty": "EASY"},
+    {"word": "coconut", "difficulty": "EASY"},
+    {"word": "guava", "difficulty": "EASY"},
+    {"word": "pomegranate", "difficulty": "EASY"},
+    {"word": "mulberry", "difficulty": "EASY"},
+    {"word": "lychee", "difficulty": "EASY"},
+    {"word": "persimmon", "difficulty": "EASY"},
+    {"word": "melon", "difficulty": "EASY"},
+    {"word": "dragonfruit", "difficulty": "EASY"},
+    {"word": "rambutan", "difficulty": "EASY"},
+    {"word": "passionfruit", "difficulty": "EASY"},
+    {"word": "kiwano", "difficulty": "EASY"},
+    {"word": "breadfruit", "difficulty": "EASY"},
+    {"word": "sapote", "difficulty": "EASY"},
+    {"word": "acai", "difficulty": "EASY"},
+    {"word": "cherimoya", "difficulty": "EASY"},
+    {"word": "durian", "difficulty": "EASY"},
+    {"word": "kumquat", "difficulty": "EASY"},
+    {"word": "lychee", "difficulty": "EASY"},
+    {"word": "starfruit", "difficulty": "EASY"},
+    {"word": "ugli", "difficulty": "EASY"},
+    {"word": "yuzu", "difficulty": "EASY"},
+    {"word": "pawpaw", "difficulty": "EASY"},
 
-    {
-      "word": "almond",
-      "difficulty": "MEDIUM"
-    },
-    {
-      "word": "blackcurrant",
-      "difficulty": "MEDIUM"
-    },
-    {
-      "word": "cantaloupe",
-      "difficulty": "MEDIUM"
-    },
-    {
-      "word": "durian",
-      "difficulty": "MEDIUM"
-    },
-    {
-      "word": "elderberry",
-      "difficulty": "MEDIUM"
-    },
-    {
-      "word": "fig",
-      "difficulty": "MEDIUM"
-    },
-    {
-      "word": "grapefruit",
-      "difficulty": "MEDIUM"
-    },
-    {
-      "word": "huckleberry",
-      "difficulty": "MEDIUM"
-    },
-    {
-      "word": "jackfruit",
-      "difficulty": "MEDIUM"
-    },
-    {
-      "word": "kiwifruit",
-      "difficulty": "MEDIUM"
-    },
-    {
-      "word": "lychee",
-      "difficulty": "MEDIUM"
-    },
-    {
-      "word": "mangosteen",
-      "difficulty": "MEDIUM"
-    },
-    {
-      "word": "nectarine",
-      "difficulty": "MEDIUM"
-    },
-    {
-      "word": "papaya",
-      "difficulty": "MEDIUM"
-    },
-    {
-      "word": "quince",
-      "difficulty": "MEDIUM"
-    },
-    {
-      "word": "rhubarb",
-      "difficulty": "MEDIUM"
-    },
-    {
-      "word": "starfruit",
-      "difficulty": "MEDIUM"
-    },
-    {
-      "word": "tamarillo",
-      "difficulty": "MEDIUM"
-    },
-    {
-      "word": "ugli",
-      "difficulty": "MEDIUM"
-    },
-    {
-      "word": "vanilla",
-      "difficulty": "MEDIUM"
-    },
-    {
-      "word": "watermelon",
-      "difficulty": "MEDIUM"
-    },
-    {
-      "word": "xigua",
-      "difficulty": "MEDIUM"
-    },
-    {
-      "word": "yellow passionfruit",
-      "difficulty": "MEDIUM"
-    },
-    {
-      "word": "zucchini",
-      "difficulty": "MEDIUM"
-    },
-
-    {
-      "word": "blackcurrant",
-      "difficulty": "HARD"
-    },
-    {
-      "word": "carambola",
-      "difficulty": "HARD"
-    },
-    {
-      "word": "date",
-      "difficulty": "HARD"
-    },
-    {
-      "word": "elderberry",
-      "difficulty": "HARD"
-    },
-    {
-      "word": "feijoa",
-      "difficulty": "HARD"
-    },
-    {
-      "word": "goji berry",
-      "difficulty": "HARD"
-    },
-    {
-      "word": "honeydew",
-      "difficulty": "HARD"
-    },
-    {
-      "word": "jujube",
-      "difficulty": "HARD"
-    },
-    {
-      "word": "kiwifruit",
-      "difficulty": "HARD"
-    },
-    {
-      "word": "longan",
-      "difficulty": "HARD"
-    },
-    {
-      "word": "mangosteen",
-      "difficulty": "HARD"
-    },
-    {
-      "word": "nectarine",
-      "difficulty": "HARD"
-    },
-    {
-      "word": "papaya",
-      "difficulty": "HARD"
-    },
-    {
-      "word": "quince",
-      "difficulty": "HARD"
-    },
-    {
-      "word": "rambutan",
-      "difficulty": "HARD"
-    },
-    {
-      "word": "soursop",
-      "difficulty": "HARD"
-    },
-    {
-      "word": "tamarind",
-      "difficulty": "HARD"
-    },
-    {
-      "word": "ugli",
-      "difficulty": "HARD"
-    },
-    {
-      "word": "vanilla",
-      "difficulty": "HARD"
-    },
-    {
-      "word": "watermelon",
-      "difficulty": "HARD"
-    },
-    {
-      "word": "xigua",
-      "difficulty": "HARD"
-    },
-    {
-      "word": "passionfruit",
-      "difficulty": "HARD"
-    },
-    {
-      "word": "zucchini",
-      "difficulty": "HARD"
-    }
+    {"word": "almond", "difficulty": "MEDIUM"},
+    {"word": "blackcurrant", "difficulty": "MEDIUM"},
+    {"word": "cantaloupe", "difficulty": "MEDIUM"},
+    {"word": "durian", "difficulty": "MEDIUM"},
+    {"word": "elderberry", "difficulty": "MEDIUM"},
+    {"word": "fig", "difficulty": "MEDIUM"},
+    {"word": "grapefruit", "difficulty": "MEDIUM"},
+    {"word": "huckleberry", "difficulty": "MEDIUM"},
+    {"word": "jackfruit", "difficulty": "MEDIUM"},
+    {"word": "kiwifruit", "difficulty": "MEDIUM"},
+    {"word": "lychee", "difficulty": "MEDIUM"},
+    {"word": "mangosteen", "difficulty": "MEDIUM"},
+    {"word": "nectarine", "difficulty": "MEDIUM"},
+    {"word": "papaya", "difficulty": "MEDIUM"},
+    {"word": "quince", "difficulty": "MEDIUM"},
+    {"word": "rhubarb", "difficulty": "MEDIUM"},
+    {"word": "starfruit", "difficulty": "MEDIUM"},
+    {"word": "tamarillo", "difficulty": "MEDIUM"},
+    {"word": "ugli", "difficulty": "MEDIUM"},
+    {"word": "vanilla", "difficulty": "MEDIUM"},
+    {"word": "watermelon", "difficulty": "MEDIUM"},
+    {"word": "xigua", "difficulty": "MEDIUM"},
+    {"word": "yellow passionfruit", "difficulty": "MEDIUM"},
+    {"word": "zucchini", "difficulty": "MEDIUM"},
+    {"word": "blackberry", "difficulty": "MEDIUM"},
+    {"word": "carambola", "difficulty": "MEDIUM"},
+    {"word": "date", "difficulty": "MEDIUM"},
+    {"word": "elderberry", "difficulty": "MEDIUM"},
+    {"word": "feijoa", "difficulty": "MEDIUM"},
+    {"word": "goji berry", "difficulty": "MEDIUM"},
+    {"word": "honeydew", "difficulty": "MEDIUM"},
+    {"word": "jujube", "difficulty": "MEDIUM"},
+    {"word": "kiwifruit", "difficulty": "MEDIUM"},
+    {"word": "longan", "difficulty": "MEDIUM"},
+    {"word": "mangosteen", "difficulty": "MEDIUM"},
+    {"word": "nectarine", "difficulty": "MEDIUM"},
+    {"word": "papaya", "difficulty": "MEDIUM"},
+    {"word": "quince", "difficulty": "MEDIUM"},
+    {"word": "rambutan", "difficulty": "MEDIUM"},
+    {"word": "soursop", "difficulty": "MEDIUM"},
+    {"word": "tamarind", "difficulty": "MEDIUM"},
+    {"word": "ugli", "difficulty": "MEDIUM"},
+    {"word": "vanilla", "difficulty": "MEDIUM"},
+    {"word": "watermelon", "difficulty": "MEDIUM"},
+    {"word": "xigua", "difficulty": "MEDIUM"},
+    {"word": "passionfruit", "difficulty": "MEDIUM"},
+    {"word": "zucchini", "difficulty": "MEDIUM"},
+    {"word": "blackberry", "difficulty": "MEDIUM"},
+    {"word": "carambola", "difficulty": "MEDIUM"},
+    {"word": "date", "difficulty": "MEDIUM"},
+    {"word": "elderberry", "difficulty": "MEDIUM"},
+    {"word": "feijoa", "difficulty": "MEDIUM"},
+    {"word": "goji berry", "difficulty": "MEDIUM"},
+    {"word": "honeydew", "difficulty": "MEDIUM"},
+    {"word": "jujube", "difficulty": "MEDIUM"},
+    {"word": "kiwifruit", "difficulty": "MEDIUM"},
+    {"word": "longan", "difficulty": "MEDIUM"},
+    {"word": "mangosteen", "difficulty": "MEDIUM"},
+    {"word": "nectarine", "difficulty": "MEDIUM"},
+    {"word": "papaya", "difficulty": "MEDIUM"},
+    {"word": "quince", "difficulty": "MEDIUM"},
+    {"word": "rambutan", "difficulty": "MEDIUM"},
+    {"word": "soursop", "difficulty": "MEDIUM"},
+    {"word": "tamarind", "difficulty": "MEDIUM"},
+    {"word": "ugli", "difficulty": "MEDIUM"},
+    {"word": "vanilla", "difficulty": "MEDIUM"},
+    {"word": "watermelon", "difficulty": "MEDIUM"},
+    {"word": "xigua", "difficulty": "MEDIUM"},
+    {"word": "passionfruit", "difficulty": "MEDIUM"},
+    {"word": "zucchini", "difficulty": "MEDIUM"},
+    {"word": "blackcurrant", "difficulty": "HARD"},
+    {"word": "carambola", "difficulty": "HARD"},
+    {"word": "date", "difficulty": "HARD"},
+    {"word": "elderberry", "difficulty": "HARD"},
+    {"word": "feijoa", "difficulty": "HARD"},
+    {"word": "goji berry", "difficulty": "HARD"},
+    {"word": "honeydew", "difficulty": "HARD"},
+    {"word": "jujube", "difficulty": "HARD"},
+    {"word": "kiwifruit", "difficulty": "HARD"},
+    {"word": "longan", "difficulty": "HARD"},
+    {"word": "mangosteen", "difficulty": "HARD"},
+    {"word": "nectarine", "difficulty": "HARD"},
+    {"word": "papaya", "difficulty": "HARD"},
+    {"word": "quince", "difficulty": "HARD"},
+    {"word": "rambutan", "difficulty": "HARD"},
+    {"word": "soursop", "difficulty": "HARD"},
+    {"word": "tamarind", "difficulty": "HARD"},
+    {"word": "ugli", "difficulty": "HARD"},
+    {"word": "vanilla", "difficulty": "HARD"},
+    {"word": "watermelon", "difficulty": "HARD"},
+    {"word": "xigua", "difficulty": "HARD"},
+    {"word": "passionfruit", "difficulty": "HARD"},
+    {"word": "zucchini", "difficulty": "HARD"}
   ]
 }
+

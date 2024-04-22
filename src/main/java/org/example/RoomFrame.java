@@ -19,6 +19,7 @@ import java.util.Random;
 
 public class RoomFrame extends JFrame {
 
+    private String username;
     private JTextField roomIdField;
     private JTextField roomCodeField;
     private JComboBox<Difficulty> difficultyComboBox;
@@ -27,7 +28,8 @@ public class RoomFrame extends JFrame {
     // SQLite connection
     private Connection connection;
 
-    public RoomFrame() {
+    public RoomFrame(String username) {
+        this.username = username;
         setTitle("Create Room");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLayout(new GridBagLayout());
@@ -134,7 +136,7 @@ public class RoomFrame extends JFrame {
 
 
             // Open the CodenameFrame with the room ID and list of keycards
-            SwingUtilities.invokeLater(() -> new CodenameFrame(roomId, keyCards));
+            SwingUtilities.invokeLater(() -> new CodenameFrame(username,roomId, keyCards));
 
             JOptionPane.showMessageDialog(this, "Room created successfully!");
             dispose(); // Close the RoomFrame
@@ -178,8 +180,6 @@ public class RoomFrame extends JFrame {
         return keyCards;
     }
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(RoomFrame::new);
-    }
+
 }
 
