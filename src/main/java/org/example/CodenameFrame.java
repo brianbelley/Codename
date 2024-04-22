@@ -155,7 +155,7 @@ public class CodenameFrame extends JFrame {
                 makeButtonRound(cardButton); // Make the button round
 
                 // Set color based on card type for spymaster's turn
-                if (isRedOperatorTurn || isBlueOperatorTurn) {
+                if (isRedSpymasterTurn || isBlueSpymasterTurn) {
                     switch (card.getCardType()) {
                         case RED:
                             cardButton.setBackground(Color.RED);
@@ -207,7 +207,7 @@ public class CodenameFrame extends JFrame {
 
     private void handleCardClick(KeyCard clickedCard) {
         // Check if it's the Spymaster's turn
-        if (!isSpymasterTurn()) {
+        if (isSpymasterTurn()) {
             // Update the card's state to revealed
             clickedCard.setRevealed(true);
 
@@ -238,9 +238,9 @@ public class CodenameFrame extends JFrame {
             for (KeyCard card : keyCards) {
                 if (!card.isRevealed()) {
                     if (card.getCardType() == CardType.RED) {
-                        blueTeamWin = false;
-                    } else if (card.getCardType() == CardType.BLUE) {
                         redTeamWin = false;
+                    } else if (card.getCardType() == CardType.BLUE) {
+                        blueTeamWin = false;
                     }
                 } else if (card.getCardType() == CardType.ASSASSIN) {
                     assassinRevealed = true;
@@ -265,6 +265,7 @@ public class CodenameFrame extends JFrame {
 
                 deleteRoom();
                 dispose();
+                return;
 
             } else if (blueTeamWin) {
                 // Display message indicating the blue team wins
@@ -282,6 +283,7 @@ public class CodenameFrame extends JFrame {
 
                 deleteRoom();
                 dispose();
+                return;
 
             } else if (assassinRevealed) {
                 // Display message indicating the assassin was revealed, end the game
@@ -299,6 +301,7 @@ public class CodenameFrame extends JFrame {
 
                 deleteRoom();
                 dispose();
+                return;
 
             } else {
                 status = "Ongoing";
@@ -316,11 +319,8 @@ public class CodenameFrame extends JFrame {
 
 
 
-
-
-
     private boolean isSpymasterTurn() {
-        return !turnOrder[currentTurnIndex].equals("RED_OPERATOR") && !turnOrder[currentTurnIndex].equals("BLUE_OPERATOR");
+        return !turnOrder[currentTurnIndex].equals("RED_SPYMASTER") && !turnOrder[currentTurnIndex].equals("BLUE_SPYMASTER");
     }
 
     private boolean isOperatorTurn(KeyCard clickedCard) {
@@ -360,8 +360,6 @@ public class CodenameFrame extends JFrame {
         blueOperator = new Player(blueRole, blueTeam, null);
 
 
-        // Start with red's turn
-        endTurn();
     }
 
     // Inside the handleRevealClue method
@@ -397,8 +395,6 @@ public class CodenameFrame extends JFrame {
 
 
     private void endTurn() {
-        // Update the card colors
-        populateCenterPanelWithKeyCards();
 
         // Hide or show clue-related components based on the current turn
         clueLabel.setVisible(!isRedSpymasterTurn && !isBlueSpymasterTurn);
@@ -408,22 +404,22 @@ public class CodenameFrame extends JFrame {
         revealCardButton.setVisible(!isRedSpymasterTurn && !isBlueSpymasterTurn);
 
 
-
-
-
         // Disable keycards during Spymaster's turn
         JPanel centerPanel = (JPanel) getContentPane().getComponent(1);
         Component[] components = centerPanel.getComponents();
         for (Component component : components) {
             if (component instanceof JButton) {
                 JButton button = (JButton) component;
-                button.setEnabled(!isRedOperatorTurn || !isBlueOperatorTurn);
+                button.setEnabled(isRedSpymasterTurn || isBlueSpymasterTurn);
             }
         }
 
         // Update the current turn index and turn variables
         currentTurnIndex = (currentTurnIndex + 1) % turnOrder.length;
         updateTurnVariables();
+
+        // Update the card colors
+        populateCenterPanelWithKeyCards();
 
 
         // Clear clue text field if it's the operator's turn
