@@ -36,6 +36,7 @@ public class CodenameFrame extends JFrame {
     private final String[] turnOrder = {"RED_SPYMASTER", "RED_OPERATOR", "BLUE_SPYMASTER", "BLUE_OPERATOR"};
     private JLabel scoreLabel;
     private GameState gameState;
+    private JLabel turnLabel;
 
     private int turnCounter = 0;
     private int redScore = 8;
@@ -63,6 +64,11 @@ public class CodenameFrame extends JFrame {
         scoreLabel = new JLabel("Red Score: " + redScore + "   Blue Score: " + blueScore);
         scoreLabel.setHorizontalAlignment(SwingConstants.CENTER);
         topPanel.add(scoreLabel, BorderLayout.CENTER);
+
+        // Add label indicating whose turn it is
+        turnLabel = new JLabel("It's Red SpyMaster's turn.");
+        turnLabel.setHorizontalAlignment(SwingConstants.LEFT);
+        topPanel.add(turnLabel, BorderLayout.WEST);
 
         JPanel centerPanel = new JPanel(new GridLayout(5, 5)); // Example layout
         add(centerPanel, BorderLayout.CENTER);
@@ -146,6 +152,7 @@ public class CodenameFrame extends JFrame {
             centerPanel.removeAll(); // Clear existing components
             for (KeyCard card : keyCards) {
                 JButton cardButton = new JButton(card.getCardWord());
+                makeButtonRound(cardButton); // Make the button round
 
                 // Set color based on card type for spymaster's turn
                 if (isRedOperatorTurn || isBlueOperatorTurn) {
@@ -165,7 +172,7 @@ public class CodenameFrame extends JFrame {
                     }
                 } else {
                     // Set default color for operator's turn
-                    cardButton.setBackground(Color.PINK);// Set default color to light gray for operator's turn
+                    cardButton.setBackground(Color.PINK); // Set default color to light gray for operator's turn
                     cardButton.setForeground(Color.BLACK);
                 }
 
@@ -176,12 +183,25 @@ public class CodenameFrame extends JFrame {
                     public void actionPerformed(ActionEvent e) {
                         // Handle card click logic
                         handleCardClick(card);
-
                     }
                 });
             }
             centerPanel.revalidate(); // Refresh the panel to reflect changes
         }
+    }
+
+    private void makeButtonRound(JButton button) {
+        button.setFocusPainted(false);
+        button.setContentAreaFilled(true);
+        button.setBorderPainted(false);
+        button.setOpaque(false);
+        button.setBorder(BorderFactory.createEmptyBorder(10, 15, 10, 15)); // Adjust padding as needed
+        button.setPreferredSize(new Dimension(100, 100)); // Adjust size as needed
+        button.setBackground(Color.WHITE); // Set background color
+        button.setForeground(Color.GRAY); // Set text color
+        button.setFont(new Font("Arial", Font.BOLD, 10)); // Set font
+        button.setCursor(new Cursor(Cursor.HAND_CURSOR)); // Set cursor
+        button.setMargin(new Insets(10, 10, 10, 10)); // Set margin
     }
 
 
@@ -347,7 +367,7 @@ public class CodenameFrame extends JFrame {
     // Inside the handleRevealClue method
     private void handleRevealClue() {
         // Check if it's the Spymaster's turn
-        if (isRedSpymasterTurn || isBlueSpymasterTurn) {
+        if (!isRedSpymasterTurn || !isBlueSpymasterTurn) {
             // Logic for revealing clue
             String clue = clueText.getText();
             String number = numberTextField.getText();
@@ -387,6 +407,10 @@ public class CodenameFrame extends JFrame {
         numberTextField.setVisible(!isRedSpymasterTurn && !isBlueSpymasterTurn);
         revealCardButton.setVisible(!isRedSpymasterTurn && !isBlueSpymasterTurn);
 
+
+
+
+
         // Disable keycards during Spymaster's turn
         JPanel centerPanel = (JPanel) getContentPane().getComponent(1);
         Component[] components = centerPanel.getComponents();
@@ -403,12 +427,14 @@ public class CodenameFrame extends JFrame {
 
 
         // Clear clue text field if it's the operator's turn
-        if (isRedOperatorTurn || isBlueOperatorTurn) {
+        if (isRedSpymasterTurn || isBlueSpymasterTurn) {
             clear();
         }
 
         // Display message indicating the current turn
         JOptionPane.showMessageDialog(this, "It's now " + turnOrder[currentTurnIndex] + "'s turn.");
+
+        turnLabel.setText("It's now " + turnOrder[currentTurnIndex] + "'s turn.");
     }
 
     private void updateTurnVariables() {

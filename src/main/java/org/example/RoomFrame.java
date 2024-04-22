@@ -134,11 +134,12 @@ public class RoomFrame extends JFrame {
             // Generate keycards based on the specified difficulty
             List<KeyCard> keyCards = KeyCard.generateKeyCards(String.valueOf(difficulty));
 
+            JOptionPane.showMessageDialog(this, "Room created successfully!");
 
             // Open the CodenameFrame with the room ID and list of keycards
             SwingUtilities.invokeLater(() -> new CodenameFrame(username,roomId, keyCards));
 
-            JOptionPane.showMessageDialog(this, "Room created successfully!");
+
             dispose(); // Close the RoomFrame
 
         } catch (SQLException ex) {
