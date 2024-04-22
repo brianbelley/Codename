@@ -100,3 +100,5 @@ public class RegisterFrame extends JFrame {
         loginFrame.setVisible(true); // Show the LoginFrame
     }
 }
+
+
