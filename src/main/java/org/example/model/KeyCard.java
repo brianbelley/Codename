@@ -3,6 +3,7 @@ package org.example.model;
 import org.example.dataaccess.FileManagement;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -49,12 +50,21 @@ public class KeyCard {
         // Generate keycards based on the words
         List<KeyCard> keyCards = new ArrayList<>();
         Random random = new Random();
-        for (String word : words) {
+        for (int i = 0; i < words.size(); i++) {
             int cardNumber = random.nextInt(1000); // Generate a random card number
-            CardType cardType = CardType.NEUTRAL; // Assuming all cards are normal for now
-            keyCards.add(new KeyCard(cardNumber, word, cardType));
+            CardType cardType;
+            if (i < 8) {
+                cardType = CardType.BLUE;
+            } else if (i < 16) {
+                cardType = CardType.RED;
+            } else if (i < 24) {
+                cardType = CardType.NEUTRAL;
+            } else {
+                cardType = CardType.ASSASSIN;
+            }
+            keyCards.add(new KeyCard(cardNumber, words.get(i), cardType));
         }
-
+        Collections.shuffle(keyCards);
         return keyCards;
     }
 

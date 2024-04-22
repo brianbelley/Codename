@@ -95,6 +95,25 @@ public class CodenameFrame extends JFrame {
             centerPanel.removeAll(); // Clear existing components
             for (KeyCard card : keyCards) {
                 JButton cardButton = new JButton(card.getCardWord());
+
+                CardType cardType = card.getCardType();
+                switch (cardType) {
+                    case BLUE:
+                        cardButton.setBackground(Color.BLUE);
+                        break;
+                    case RED:
+                        cardButton.setBackground(Color.GREEN);
+                        break;
+                    case NEUTRAL:
+                        cardButton.setBackground(Color.WHITE);
+                        break;
+                    case ASSASSIN:
+                        cardButton.setBackground(Color.RED);
+                        break;
+                    default:
+                        System.out.println("Invalid card type");
+                        break;
+                }
                 centerPanel.add(cardButton);
                 // Add action listener to handle card clicks
                 cardButton.addActionListener(new ActionListener() {
