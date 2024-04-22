@@ -14,7 +14,7 @@ import java.util.Random;
 public class FileManagement {
 
     public static List<Word> readWordsFromFile(String filePath) {
-        filePath = "src/main/java/org/example/dataaccess/words.json";
+        filePath = "D:\\lasalle\\semester6\\System_Implementation\\Codename\\src\\main\\java\\org\\example\\dataaccess\\words.json";
         List<Word> words = new ArrayList<>();
 
         JSONParser parser = new JSONParser();

@@ -30,7 +30,7 @@ public class RoomFrame extends JFrame {
     public RoomFrame() {
         setTitle("Create Room");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setLayout(new GridBagLayout());
+        setLayout(new GridLayout(5,5));
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(5, 5, 5, 5); // Padding
 

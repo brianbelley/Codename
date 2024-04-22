@@ -33,6 +33,9 @@ public class CodenameFrame extends JFrame {
     private JButton revealCardButton;
 
 
+    private int redScore = 0;
+    private int blueScore = 0;
+
     public CodenameFrame(int roomIdToDelete, List<KeyCard> keyCards) {
         this.roomIdToDelete = roomIdToDelete; // Store the room ID to delete
         this.keyCards = keyCards; // Store the keycards
@@ -152,12 +155,18 @@ public class CodenameFrame extends JFrame {
                 }
 
                 centerPanel.add(cardButton);
+                cardButton.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        calculateScore(card);
+                    }
+                });
                 // Add action listener to handle card clicks
                 cardButton.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         // Handle card click logic
-                        JOptionPane.showMessageDialog(CodenameFrame.this, "Card Clicked: " + card.getCardWord());
+
                     }
                 });
             }
@@ -166,6 +175,41 @@ public class CodenameFrame extends JFrame {
     }
 
 
+
+    private void calculateScore(KeyCard card){
+        if(blueScore==8||redScore==8){
+
+        }
+        if (!isBlueSpymasterTurn || !isRedSpymasterTurn){
+            JOptionPane.showMessageDialog(this, "Spy Masters can not choose a word.");
+        }
+        if (!isBlueOperatorTurn|| !isRedOperatorTurn){
+            if (card.getCardType() == CardType.BLUE){
+                blueScore ++;
+                JOptionPane.showMessageDialog(this, "Blue: " + blueScore + "Red: " + redScore);
+            }
+            if (card.getCardType() == CardType.RED){
+                JOptionPane.showMessageDialog(this, "Blue: " + blueScore + "Red: " + redScore);
+                redScore ++;
+                endTurn();
+            }
+            if (card.getCardType() == CardType.NEUTRAL){
+                JOptionPane.showMessageDialog(this, "Blue: " + blueScore + "Red: " + redScore);
+                endTurn();
+            }
+            if (card.getCardType() == CardType.ASSASSIN){
+                if (!isBlueOperatorTurn){
+                    JOptionPane.showMessageDialog(this, "Red team Wins!!");
+                }
+                if (!isRedOperatorTurn) {
+                    JOptionPane.showMessageDialog(this, "Blue team Wins!!");
+                }
+            }
+
+        }
+
+
+    }
 
     private void deleteRoom() {
         // Perform deletion operation in the database or any other cleanup
