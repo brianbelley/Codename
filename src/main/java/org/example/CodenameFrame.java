@@ -19,9 +19,10 @@ public class CodenameFrame extends JFrame {
         this.roomIdToDelete = roomIdToDelete; // Store the room ID to delete
         this.keyCards = keyCards; // Store the keycards
 
-        setTitle("Codename Game");
+
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
+
 
         // Add components
         JPanel topPanel = new JPanel(new BorderLayout());
@@ -30,13 +31,27 @@ public class CodenameFrame extends JFrame {
         topPanel.add(titleLabel, BorderLayout.NORTH);
         add(topPanel, BorderLayout.NORTH);
 
-        JPanel centerPanel = new JPanel(new GridLayout(4, 5)); // Example layout
+
+        JPanel centerPanel = new JPanel(new GridLayout(5, 5)); // Example layout
         add(centerPanel, BorderLayout.CENTER);
 
-        JPanel bottomPanel = new JPanel();
+        JPanel bottomPanel = new JPanel(new GridLayout(4, 2));
         JButton endTurnButton = new JButton("End Turn");
+        JButton revealCardButton = new JButton("Reveal Card");
+        JLabel clueLabel = new JLabel("Clue:");
+        JTextField clueText = new JTextField();
+        JLabel numberLabel = new JLabel("Number:");
+        JTextField numberTextField = new JTextField();
+
+        bottomPanel.add(clueLabel);
+        bottomPanel.add(clueText);
+        bottomPanel.add(numberLabel);
+        bottomPanel.add(numberTextField);
+        bottomPanel.add(revealCardButton);
         bottomPanel.add(endTurnButton);
+
         add(bottomPanel, BorderLayout.SOUTH);
+
 
         // End turn button action listener
         endTurnButton.addActionListener(new ActionListener() {
@@ -56,7 +71,7 @@ public class CodenameFrame extends JFrame {
         });
 
         // Set size and make visible
-        setSize(800, 600);
+        setSize(500, 500);
         setLocationRelativeTo(null);
         setVisible(true);
 

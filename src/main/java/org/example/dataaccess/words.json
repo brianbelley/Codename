@@ -5,200 +5,290 @@
       "difficulty": "EASY"
     },
     {
+      "word": "apricot",
+      "difficulty": "EASY"
+    },
+    {
+      "word": "avocado",
+      "difficulty": "EASY"
+    },
+    {
       "word": "banana",
-      "difficulty": "MEDIUM"
-    },
-    {
-      "word": "carrot",
-      "difficulty": "HARD"
-    },
-    {
-      "word": "dog",
       "difficulty": "EASY"
     },
     {
-      "word": "elephant",
-      "difficulty": "MEDIUM"
-    },
-    {
-      "word": "giraffe",
-      "difficulty": "HARD"
-    },
-    {
-      "word": "house",
+      "word": "blackberry",
       "difficulty": "EASY"
     },
     {
-      "word": "island",
-      "difficulty": "MEDIUM"
-    },
-    {
-      "word": "jacket",
-      "difficulty": "HARD"
-    },
-    {
-      "word": "kite",
+      "word": "blueberry",
       "difficulty": "EASY"
     },
     {
-      "word": "lion",
-      "difficulty": "MEDIUM"
+      "word": "cherry",
+      "difficulty": "EASY"
     },
     {
-      "word": "mountain",
-      "difficulty": "HARD"
+      "word": "date",
+      "difficulty": "EASY"
+    },
+    {
+      "word": "elderberry",
+      "difficulty": "EASY"
+    },
+    {
+      "word": "eggplant",
+      "difficulty": "EASY"
+    },
+    {
+      "word": "fig",
+      "difficulty": "EASY"
+    },
+    {
+      "word": "grape",
+      "difficulty": "EASY"
+    },
+    {
+      "word": "grapefruit",
+      "difficulty": "EASY"
+    },
+    {
+      "word": "honeydew",
+      "difficulty": "EASY"
+    },
+    {
+      "word": "kiwi",
+      "difficulty": "EASY"
+    },
+    {
+      "word": "lemon",
+      "difficulty": "EASY"
+    },
+    {
+      "word": "mango",
+      "difficulty": "EASY"
+    },
+    {
+      "word": "nectarine",
+      "difficulty": "EASY"
     },
     {
       "word": "orange",
       "difficulty": "EASY"
     },
     {
-      "word": "pineapple",
-      "difficulty": "MEDIUM"
-    },
-    {
-      "word": "quartz",
-      "difficulty": "HARD"
-    },
-    {
-      "word": "rabbit",
+      "word": "papaya",
       "difficulty": "EASY"
     },
     {
-      "word": "squirrel",
-      "difficulty": "MEDIUM"
-    },
-    {
-      "word": "tiger",
-      "difficulty": "HARD"
-    },
-    {
-      "word": "umbrella",
+      "word": "pear",
       "difficulty": "EASY"
     },
     {
-      "word": "violin",
-      "difficulty": "MEDIUM"
-    },
-    {
-      "word": "waterfall",
-      "difficulty": "HARD"
-    },
-    {
-      "word": "xylophone",
+      "word": "quince",
       "difficulty": "EASY"
     },
     {
-      "word": "yak",
-      "difficulty": "MEDIUM"
-    },
-    {
-      "word": "zebra",
-      "difficulty": "HARD"
-    },
-    {
-      "word": "ant",
+      "word": "raspberry",
       "difficulty": "EASY"
     },
     {
-      "word": "bear",
-      "difficulty": "MEDIUM"
-    },
-    {
-      "word": "cat",
-      "difficulty": "HARD"
-    },
-    {
-      "word": "deer",
+      "word": "strawberry",
       "difficulty": "EASY"
     },
     {
-      "word": "elephant",
+      "word": "tangerine",
+      "difficulty": "EASY"
+    },
+
+    {
+      "word": "almond",
       "difficulty": "MEDIUM"
     },
     {
-      "word": "fox",
+      "word": "blackcurrant",
+      "difficulty": "MEDIUM"
+    },
+    {
+      "word": "cantaloupe",
+      "difficulty": "MEDIUM"
+    },
+    {
+      "word": "durian",
+      "difficulty": "MEDIUM"
+    },
+    {
+      "word": "elderberry",
+      "difficulty": "MEDIUM"
+    },
+    {
+      "word": "fig",
+      "difficulty": "MEDIUM"
+    },
+    {
+      "word": "grapefruit",
+      "difficulty": "MEDIUM"
+    },
+    {
+      "word": "huckleberry",
+      "difficulty": "MEDIUM"
+    },
+    {
+      "word": "jackfruit",
+      "difficulty": "MEDIUM"
+    },
+    {
+      "word": "kiwifruit",
+      "difficulty": "MEDIUM"
+    },
+    {
+      "word": "lychee",
+      "difficulty": "MEDIUM"
+    },
+    {
+      "word": "mangosteen",
+      "difficulty": "MEDIUM"
+    },
+    {
+      "word": "nectarine",
+      "difficulty": "MEDIUM"
+    },
+    {
+      "word": "papaya",
+      "difficulty": "MEDIUM"
+    },
+    {
+      "word": "quince",
+      "difficulty": "MEDIUM"
+    },
+    {
+      "word": "rhubarb",
+      "difficulty": "MEDIUM"
+    },
+    {
+      "word": "starfruit",
+      "difficulty": "MEDIUM"
+    },
+    {
+      "word": "tamarillo",
+      "difficulty": "MEDIUM"
+    },
+    {
+      "word": "ugli",
+      "difficulty": "MEDIUM"
+    },
+    {
+      "word": "vanilla",
+      "difficulty": "MEDIUM"
+    },
+    {
+      "word": "watermelon",
+      "difficulty": "MEDIUM"
+    },
+    {
+      "word": "xigua",
+      "difficulty": "MEDIUM"
+    },
+    {
+      "word": "yellow passionfruit",
+      "difficulty": "MEDIUM"
+    },
+    {
+      "word": "zucchini",
+      "difficulty": "MEDIUM"
+    },
+
+    {
+      "word": "blackcurrant",
       "difficulty": "HARD"
     },
     {
-      "word": "giraffe",
-      "difficulty": "EASY"
-    },
-    {
-      "word": "hippopotamus",
-      "difficulty": "MEDIUM"
-    },
-    {
-      "word": "iguana",
+      "word": "carambola",
       "difficulty": "HARD"
     },
     {
-      "word": "jaguar",
-      "difficulty": "EASY"
-    },
-    {
-      "word": "kangaroo",
-      "difficulty": "MEDIUM"
-    },
-    {
-      "word": "lemur",
+      "word": "date",
       "difficulty": "HARD"
     },
     {
-      "word": "monkey",
-      "difficulty": "EASY"
-    },
-    {
-      "word": "narwhal",
-      "difficulty": "MEDIUM"
-    },
-    {
-      "word": "owl",
+      "word": "elderberry",
       "difficulty": "HARD"
     },
     {
-      "word": "penguin",
-      "difficulty": "EASY"
-    },
-    {
-      "word": "quokka",
-      "difficulty": "MEDIUM"
-    },
-    {
-      "word": "rhinoceros",
+      "word": "feijoa",
       "difficulty": "HARD"
     },
     {
-      "word": "shark",
-      "difficulty": "EASY"
-    },
-    {
-      "word": "toucan",
-      "difficulty": "MEDIUM"
-    },
-    {
-      "word": "unicorn",
+      "word": "goji berry",
       "difficulty": "HARD"
     },
     {
-      "word": "vulture",
-      "difficulty": "EASY"
-    },
-    {
-      "word": "whale",
-      "difficulty": "MEDIUM"
-    },
-    {
-      "word": "xenops",
+      "word": "honeydew",
       "difficulty": "HARD"
     },
     {
-      "word": "yak",
-      "difficulty": "EASY"
+      "word": "jujube",
+      "difficulty": "HARD"
     },
     {
-      "word": "zebra",
-      "difficulty": "MEDIUM"
+      "word": "kiwifruit",
+      "difficulty": "HARD"
+    },
+    {
+      "word": "longan",
+      "difficulty": "HARD"
+    },
+    {
+      "word": "mangosteen",
+      "difficulty": "HARD"
+    },
+    {
+      "word": "nectarine",
+      "difficulty": "HARD"
+    },
+    {
+      "word": "papaya",
+      "difficulty": "HARD"
+    },
+    {
+      "word": "quince",
+      "difficulty": "HARD"
+    },
+    {
+      "word": "rambutan",
+      "difficulty": "HARD"
+    },
+    {
+      "word": "soursop",
+      "difficulty": "HARD"
+    },
+    {
+      "word": "tamarind",
+      "difficulty": "HARD"
+    },
+    {
+      "word": "ugli",
+      "difficulty": "HARD"
+    },
+    {
+      "word": "vanilla",
+      "difficulty": "HARD"
+    },
+    {
+      "word": "watermelon",
+      "difficulty": "HARD"
+    },
+    {
+      "word": "xigua",
+      "difficulty": "HARD"
+    },
+    {
+      "word": "passionfruit",
+      "difficulty": "HARD"
+    },
+    {
+      "word": "zucchini",
+      "difficulty": "HARD"
     }
   ]
 }
