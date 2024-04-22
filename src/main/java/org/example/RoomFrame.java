@@ -118,8 +118,6 @@ public class RoomFrame extends JFrame {
         Difficulty difficulty = (Difficulty) difficultyComboBox.getSelectedItem();
         int roomSize = Integer.parseInt(roomSizeField.getText().trim()); // Assuming roomSize is provided
 
-        // Ensure that the KeyCard table exists
-        ensureKeyCardTableExists();
 
         // Insert room data into Rooms table
         String insertRoomQuery = "INSERT INTO Rooms (RoomID, RoomCode, Difficulty, RoomSize) VALUES (?, ?, ?, ?)";
@@ -143,23 +141,6 @@ public class RoomFrame extends JFrame {
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(this, "Failed to create room: " + ex.getMessage());
-            ex.printStackTrace();
-        }
-    }
-
-
-
-
-    private void ensureKeyCardTableExists() {
-        // Check if the KeyCard table exists, if not, create it
-        String createKeyCardTableQuery = "CREATE TABLE IF NOT EXISTS KeyCard (" +
-                "CardNumber INTEGER PRIMARY KEY," +
-                "CardWord TEXT," +
-                "CardType TEXT)";
-        try {
-            connection.createStatement().executeUpdate(createKeyCardTableQuery);
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, "Failed to ensure KeyCard table exists: " + ex.getMessage());
             ex.printStackTrace();
         }
     }
