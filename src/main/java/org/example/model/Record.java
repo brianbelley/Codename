@@ -1,9 +1,13 @@
 package org.example.model;
 
+import org.example.dataaccess.DB;
+
 import javax.swing.*;
 import java.sql.*;
+import java.util.List;
 
 public class Record {
+    private int id;
     private int roundNumber;
     private int scoreNumber;
     private String result;
@@ -14,10 +18,24 @@ public class Record {
         this.result = result;
     }
 
+    public Record(int id, int scoreNumber, int roundNumber, String result) {
+        this.id = id;
+        this.roundNumber = roundNumber;
+        this.scoreNumber = scoreNumber;
+        this.result = result;
+    }
+
     public Record() {
         this.roundNumber = 0;
         this.scoreNumber = 0;
         this.result = "";
+    }
+
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
     }
 
     // Getters and setters for roundNumber, scoreNumber, and result
@@ -55,8 +73,27 @@ public class Record {
                 '}';
     }
 
+    // List records for a given username
+    public static List<Record> listRecords(String username) {
+        try {
+            return DB.listRecords(username);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Failed to load records: " + ex.getMessage());
+            ex.printStackTrace();
+            return null;
+        }
+    }
 
 
+    // Method to delete a record
+    public static void deleteRecord(int id) {
+        try {
+            DB.deleteRecord(id);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Failed to delete record: " + ex.getMessage());
+            ex.printStackTrace();
+        }
+    }
 
 }
 

@@ -1,5 +1,10 @@
 package org.example.model;
 
+import org.example.dataaccess.DB;
+
+import javax.swing.*;
+import java.sql.SQLException;
+
 public class Room {
     private int roomId;
     private int roomCode;
@@ -54,6 +59,16 @@ public class Room {
 
     public void setPlayers(Player[] players) {
         this.players = players;
+    }
+
+    public void saveRoom() {
+        try {
+            DB.saveRoom(roomId, roomCode, difficulty.toString(), roomSize);
+            JOptionPane.showMessageDialog(null, "Room saved successfully!");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Failed to save room: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 }
 

@@ -1,4 +1,6 @@
 package org.example.model;
+import org.example.dataaccess.DB;
+
 import javax.swing.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -71,43 +73,10 @@ public class User {
                 '}';
     }
 
-    // Create Records table if it doesn't exist
-    private static void createRecordsTableIfNotExists(Connection connection) throws SQLException {
-        String createRecordsTableQuery = "CREATE TABLE IF NOT EXISTS Records (" +
-                "id INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "username TEXT," +
-                "roundNumber INTEGER," +
-                "scoreNumber INTEGER," +
-                "result TEXT)";
-        try (Statement statement = connection.createStatement()) {
-            statement.executeUpdate(createRecordsTableQuery);
-        }
-    }
-
-    // Save the record to the database
     public void saveRecord(User user) {
-        // Get connection to the database
-        try (Connection connection = getConnection()) {
-            //Check if the Records table is created
-            createRecordsTableIfNotExists(connection);
-
-            // SQL query to insert a record into the Records table
-            String insertRecordQuery = "INSERT INTO Records (username, roundNumber, scoreNumber, result) VALUES (?, ?, ?, ?)";
-            try (PreparedStatement statement = connection.prepareStatement(insertRecordQuery)) {
-                // Set values for the prepared statement
-                statement.setString(1, user.getUsername());
-                statement.setInt(2, record.getRoundNumber());
-                statement.setInt(3, record.getScoreNumber());
-                statement.setString(4, record.getResult());
-                // Execute the query
-                statement.executeUpdate();
-                JOptionPane.showMessageDialog(null, "Record saved successfully!");
-            }
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Failed to save record: " + e.getMessage());
-            e.printStackTrace();
-        }
+        DB.saveRecord(user.getUsername(), record.getRoundNumber(), record.getScoreNumber(), record.getResult());
     }
+
 
 
 

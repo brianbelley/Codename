@@ -14,7 +14,7 @@ public class LoginService {
 
     static {
         try {
-            // Connect to SQLite database (create one if not exists)
+            // Connect to SQLite database
             connection = DriverManager.getConnection("jdbc:sqlite:CodenameDB.sqlite");
 
             // Create users table if not exists
@@ -51,7 +51,7 @@ public class LoginService {
             statement.setString(1, username);
             statement.setString(2, password);
             ResultSet resultSet = statement.executeQuery();
-            return resultSet.next(); // Return true if a row is returned, indicating successful login
+            return resultSet.next(); // Return true if a row is returned
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Failed to login: " + ex.getMessage());
             ex.printStackTrace();

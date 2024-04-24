@@ -259,6 +259,7 @@ public class CodenameFrame extends JFrame {
                 // Create a record instance and save it
                 Record record = new Record(gameState.getRoundNumber(), gameState.getScoreNumber(), gameState.getStatus());
                 User user = new User(username,record);
+                user.setUsername(username);
                 user.saveRecord(user);
 
                 new MenuFrame(username);
@@ -277,6 +278,7 @@ public class CodenameFrame extends JFrame {
                 // Create a record instance and save it
                 Record record = new Record(gameState.getRoundNumber(), gameState.getScoreNumber(), gameState.getStatus());
                 User user = new User(username,record);
+                user.setUsername(username);
                 user.saveRecord(user);
 
                 new MenuFrame(username);
@@ -295,6 +297,7 @@ public class CodenameFrame extends JFrame {
                 // Create a record instance and save it
                 Record record = new Record(gameState.getRoundNumber(), gameState.getScoreNumber(), gameState.getStatus());
                 User user = new User(username,record);
+                user.setUsername(username);
                 user.saveRecord(user);
 
                 new MenuFrame(username);
@@ -358,7 +361,6 @@ public class CodenameFrame extends JFrame {
 
         redOperator = new Player(redRole, redTeam, null);
         blueOperator = new Player(blueRole, blueTeam, null);
-
 
     }
 

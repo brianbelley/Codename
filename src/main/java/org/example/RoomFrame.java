@@ -2,6 +2,7 @@ package org.example;
 import org.example.model.CardType;
 import org.example.model.Difficulty;
 import org.example.model.KeyCard;
+import org.example.model.Room;
 
 
 import javax.swing.*;
@@ -120,33 +121,21 @@ public class RoomFrame extends JFrame {
         Difficulty difficulty = (Difficulty) difficultyComboBox.getSelectedItem();
         int roomSize = Integer.parseInt(roomSizeField.getText().trim()); // Assuming roomSize is provided
 
+        // Create a new Room object
+        Room room = new Room(roomId, roomCode, difficulty, roomSize, null);
 
-        // Insert room data into Rooms table
-        String insertRoomQuery = "INSERT INTO Rooms (RoomID, RoomCode, Difficulty, RoomSize) VALUES (?, ?, ?, ?)";
-        try (PreparedStatement roomStatement = connection.prepareStatement(insertRoomQuery)) {
-            // Insert room data
-            roomStatement.setInt(1, roomId);
-            roomStatement.setInt(2, roomCode);
-            roomStatement.setString(3, difficulty.toString());
-            roomStatement.setInt(4, roomSize);
-            roomStatement.executeUpdate();
+        // Save the room data
+        room.saveRoom();
 
-            // Generate keycards based on the specified difficulty
-            List<KeyCard> keyCards = KeyCard.generateKeyCards(String.valueOf(difficulty));
+        // Generate keycards based on the specified difficulty
+        List<KeyCard> keyCards = KeyCard.generateKeyCards(String.valueOf(difficulty));
 
-            JOptionPane.showMessageDialog(this, "Room created successfully!");
+        // Open the CodenameFrame with the room ID and list of keycards
+        SwingUtilities.invokeLater(() -> new CodenameFrame(username, roomId, keyCards));
 
-            // Open the CodenameFrame with the room ID and list of keycards
-            SwingUtilities.invokeLater(() -> new CodenameFrame(username,roomId, keyCards));
-
-
-            dispose(); // Close the RoomFrame
-
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, "Failed to create room: " + ex.getMessage());
-            ex.printStackTrace();
-        }
+        dispose(); // Close the RoomFrame
     }
+
 
 
 

@@ -13,7 +13,7 @@ import java.util.Random;
 
 public class FileManagement {
 
-    public static List<Word> readWordsFromFile(String filePath) {
+    public static List<Word> readFromFile(String filePath) {
         filePath = "src/main/java/org/example/dataaccess/words.json";
         List<Word> words = new ArrayList<>();
 
@@ -40,7 +40,7 @@ public class FileManagement {
 
 
     public static List<String> getWordsByDifficulty(String filePath, String difficulty) {
-        List<Word> words = readWordsFromFile(filePath);
+        List<Word> words = readFromFile(filePath);
         List<String> matchingWords = new ArrayList<>();
 
         for (Word word : words) {
