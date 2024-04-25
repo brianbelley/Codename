@@ -64,7 +64,6 @@ public class Room {
     public void saveRoom() {
         try {
             DB.saveRoom(roomId, roomCode, difficulty.toString(), roomSize);
-            JOptionPane.showMessageDialog(null, "Room saved successfully!");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Failed to save room: " + e.getMessage());
             e.printStackTrace();
